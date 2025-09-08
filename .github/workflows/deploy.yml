@@ -55,7 +55,8 @@ jobs:
           key: ${{ secrets.TEST_KEY }}
           port: 22
           script: |
-            docker stop stocks || true
-            docker rm --force stocks || true
-            docker run -d -p 8080:8080 --name stocks enzoperego/stocks:${{ github.sha }}
+            docker stop movimentacoes || true
+            docker rm --force movimentacoes || true
+            docker run -d -p 8080:5000 --name movimentacoes enzoperego/stocks:${{ github.sha }}
+            
 
