@@ -58,5 +58,4 @@ jobs:
             docker stop movimentacoes || true
             docker rm --force movimentacoes || true
             docker run -d -p 8080:5000 --name movimentacoes enzoperego/stocks:${{ github.sha }}
-            
 
