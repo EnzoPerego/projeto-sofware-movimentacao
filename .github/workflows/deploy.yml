@@ -33,7 +33,7 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: "EnzoPerego"
+          username: "enzoperego"
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       - name: Set up Docker Buildx
@@ -45,7 +45,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: EnzoPerego/stocks:${{ github.sha }}
+          tags: enzoperego/stocks:${{ github.sha }}
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
@@ -57,4 +57,6 @@ jobs:
           script: |
             docker stop stocks || true
             docker rm --force stocks || true
-            docker run -d -p 8080:8080 --name stocks EnzoPerego/stocks:${{ github.sha }}
+            docker run -d -p 8080:8080 --name stocks enzoperego/stocks:${{ github.sha }}
+
+            
