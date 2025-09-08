@@ -50,13 +50,12 @@ jobs:
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.HOST_TEST }}
+          host: ${{ secrets.HOST_KEY }}
           username: "ubuntu"
-          key: ${{ secrets.KEY_TEST }}
+          key: ${{ secrets.TEST_KEY }}
           port: 22
           script: |
             docker stop stocks || true
             docker rm --force stocks || true
             docker run -d -p 8080:8080 --name stocks enzoperego/stocks:${{ github.sha }}
 
-            
